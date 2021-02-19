@@ -1,0 +1,63 @@
+#--------------------Items--------------------
+#---------------------------------------------
+###
+
+GET http://localhost:3000/api/items?folderId=1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwibG9naW4iOiJ2aXR5YXBvcG92OThAeWFuZGV4LnJ1IiwiaWF0IjoxNjEyMzczMjI5LCJleHAiOjE2MTIzNzY4Mjl9.yPNb_l2fTZaYin-Ey3X9CTCwigJCISB6_Aubsd-TiSs
+
+###
+
+GET http://localhost:3000/api/items?storageId=1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwibG9naW4iOiJ2aXR5YXBvcG92OThAeWFuZGV4LnJ1IiwiaWF0IjoxNjEyMzczMjI5LCJleHAiOjE2MTIzNzY4Mjl9.yPNb_l2fTZaYin-Ey3X9CTCwigJCISB6_Aubsd-TiSs
+
+###
+
+GET http://localhost:3000/api/items?communityId=1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwibG9naW4iOiJ2aXR5YXBvcG92OThAeWFuZGV4LnJ1IiwiaWF0IjoxNjExNzUxNDc2LCJleHAiOjE2MTE3NTUwNzZ9.KVs1HS9ZNiajxGSb6BReTmvJGFHoCNTvweKyjlSuPbI
+
+###
+POST http://localhost:3000/api/items
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwibG9naW4iOiJ2aXR5YXBvcG92OThAeWFuZGV4LnJ1IiwiaWF0IjoxNjExNzczNDI3LCJleHAiOjE2MTE3NzcwMjd9.Z3_b2zYXc1HXynG6gycPgRBfds_9WiQyy0UZp9xY1UE
+Content-Type: application/json
+
+{
+    "name": "Китайская ваза",
+    "description": "Антикварная ваза правителя Ли Си Цын",
+    "image": "https://source.unsplash.com/Dq_YHznEXI0",
+    "purchaseDate": null,
+    "guarantee": null,
+    "cost": 100,
+    "count": 1,
+    "utilizeDate": null,
+    "utilizeReason": null,
+    "storageId": 1,
+    "folderId": 1,
+    "givingId": null,
+    "communityId": 1
+}
+
+###
+PUT http://localhost:3000/api/items
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwibG9naW4iOiJ2aXR5YXBvcG92OThAeWFuZGV4LnJ1IiwiaWF0IjoxNjExNzc3MTgyLCJleHAiOjE2MTE3ODA3ODJ9.TGmm9ExDc7ZxNGlqForVlzpXkEpTeLTY_gCkXKI5drM
+Content-Type: application/json
+
+{
+    "id": 4,
+    "name": "Фарфоровая игрушка",
+    "description": "Телефон Xiaomi Redmi Note 15",
+    "image": "https://source.unsplash.com/Dq_YHznEXI0",
+    "purchaseDate": null,
+    "guarantee": null,
+    "cost": 100,
+    "count": 1,
+    "utilizeDate": null,
+    "utilizeReason": null,
+    "storageId": 1,
+    "folderId": 1,
+    "givingId": null,
+    "communityId": 1
+}
+
+###
+DELETE http://localhost:3000/api/items?id=2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwibG9naW4iOiJ2aXR5YXBvcG92OThAeWFuZGV4LnJ1IiwiaWF0IjoxNjExNzU1Mzk4LCJleHAiOjE2MTE3NTg5OTh9.YybhBmp6-amQ22ZQVbIOmRqPt7Wkg-LSho1Tl54sX-E

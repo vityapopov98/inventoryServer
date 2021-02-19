@@ -1,0 +1,33 @@
+###
+#--------------------STORAGES------------------------
+#---------------------------------------------------
+GET http://localhost:3000/api/storages
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwibG9naW4iOiJ2aXR5YXBvcG92OThAeWFuZGV4LnJ1IiwiaWF0IjoxNjEyMzczMjI5LCJleHAiOjE2MTIzNzY4Mjl9.yPNb_l2fTZaYin-Ey3X9CTCwigJCISB6_Aubsd-TiSs
+
+###
+POST http://localhost:3000/api/storages
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwibG9naW4iOiJ2aXR5YXBvcG92OThAeWFuZGV4LnJ1IiwiaWF0IjoxNjEyMzczMjI5LCJleHAiOjE2MTIzNzY4Mjl9.yPNb_l2fTZaYin-Ey3X9CTCwigJCISB6_Aubsd-TiSs
+Content-Type: application/json
+
+{
+    "name": "Гараж new",
+    "image": "icon-all.png",
+    "color": "red",
+    "communityId": 1
+}
+
+###
+PUT http://localhost:3000/api/storages
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwibG9naW4iOiJ2aXR5YXBvcG92OThAeWFuZGV4LnJ1IiwiaWF0IjoxNjEyMzczMjI5LCJleHAiOjE2MTIzNzY4Mjl9.yPNb_l2fTZaYin-Ey3X9CTCwigJCISB6_Aubsd-TiSs
+Content-Type: application/json
+
+{
+    "id": 3,
+    "name": "Гараж new updated",
+    "image": "icon-all.png",
+    "color": "blue"
+}
+
+###
+DELETE http://localhost:3000/api/storages?storageId=2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwibG9naW4iOiJ2aXR5YXBvcG92OThAeWFuZGV4LnJ1IiwiaWF0IjoxNjEyMzczMjI5LCJleHAiOjE2MTIzNzY4Mjl9.yPNb_l2fTZaYin-Ey3X9CTCwigJCISB6_Aubsd-TiSs

@@ -1,0 +1,13 @@
+#eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwibG9naW4iOiJ2aXR5YXBvcG92OThAeWFuZGV4LnJ1IiwiaWF0IjoxNjEyNDQ4MzE1LCJleHAiOjE2MTI0NTE5MTV9.-PUFz5bZBRPbyucBE_LA0d7h_V0icdi0oZDs53gdIyg
+
+GET http://localhost:3000/api/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwibG9naW4iOiJ2aXR5YXBvcG92OThAeWFuZGV4LnJ1IiwiaWF0IjoxNjEyNDQ4MzE1LCJleHAiOjE2MTI0NTE5MTV9.-PUFz5bZBRPbyucBE_LA0d7h_V0icdi0oZDs53gdIyg
+
+###
+PUT http://localhost:3000/api/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwibG9naW4iOiJ2aXR5YXBvcG92OThAeWFuZGV4LnJ1IiwiaWF0IjoxNjEyNDQ4MzE1LCJleHAiOjE2MTI0NTE5MTV9.-PUFz5bZBRPbyucBE_LA0d7h_V0icdi0oZDs53gdIyg
+Content-Type: application/json
+
+{
+    "selectedCommunity": 7
+}

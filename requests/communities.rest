@@ -1,0 +1,17 @@
+GET http://localhost:3000/api/communityUsers?selectedCommunity=7
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwibG9naW4iOiJ2aXR5YXBvcG92OThAeWFuZGV4LnJ1IiwiaWF0IjoxNjEyODAyNTkwLCJleHAiOjE2MTI4MDYxOTB9.54R9P417_bqaRUP4DxNXC9LXBwVxZzhPBFdGcORNqYA
+
+###
+GET http://localhost:3000/api/community?communityId=1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwibG9naW4iOiJ2aXR5YXBvcG92OThAeWFuZGV4LnJ1IiwiaWF0IjoxNjEyODkwOTk2LCJleHAiOjE2MTI4OTQ1OTZ9.0e893ZopPpZuzHqZs5ffTsIyxnku0KIUPyWzWDZeyqs
+
+###
+
+POST http://localhost:3000/api/addUserToCommunity
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwibG9naW4iOiJ2aXR5YXBvcG92OThAeWFuZGV4LnJ1IiwiaWF0IjoxNjEyODkwOTk2LCJleHAiOjE2MTI4OTQ1OTZ9.0e893ZopPpZuzHqZs5ffTsIyxnku0KIUPyWzWDZeyqs
+Content-Type: application/json
+
+{
+    "login": "andrei@example.com",
+    "communityId": 10
+}

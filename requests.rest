@@ -1,0 +1,163 @@
+GET http://localhost:3000/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwibG9naW4iOiJ2aXR5YXBvcG92OThAeWFuZGV4LnJ1IiwiaWF0IjoxNjExNzM0NjcxLCJleHAiOjE2MTE3MzgyNzF9.Xxtab1BPLvZgoPFVQk6Qrx9yZO4HWBnvEG93GLsJzBg
+
+###
+POST http://localhost:3000/api/register
+Content-Type: application/json
+
+{
+    "user": {
+        
+        "login": "john@example.com",
+        "password": "1234john"
+    }
+}
+
+###
+POST http://localhost:3000/api/login
+Content-Type: application/json
+
+{
+    "email": "vityapopov98@yandex.ru",
+    "password": "qwerty"
+}
+
+# {
+#     "email": "vityapopov98@gmail.com",
+#     "password": "1234"
+# }
+
+###
+POST http://localhost:3000/api/refreshToken
+Content-Type: application/json
+
+{
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwibG9naW4iOiJ2aXR5YXBvcG92OThAeWFuZGV4LnJ1IiwiaWF0IjoxNjEyNDQ4MzE1LCJleHAiOjE2NDQwMDU5MTV9.ewapB9MxfjaHCmehBKBMrPceDOY6jKN6oHSHjWaab8c"
+}
+
+###
+#--------------------FOLDERS------------------------
+#---------------------------------------------------
+GET http://localhost:3000/api/folders
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwibG9naW4iOiJ2aXR5YXBvcG92OThAeWFuZGV4LnJ1IiwiaWF0IjoxNjEyODAyNTkwLCJleHAiOjE2MTI4MDYxOTB9.54R9P417_bqaRUP4DxNXC9LXBwVxZzhPBFdGcORNqYA
+###
+POST http://localhost:3000/api/folders
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwibG9naW4iOiJ2aXR5YXBvcG92OThAeWFuZGV4LnJ1IiwiaWF0IjoxNjExNzY5NDczLCJleHAiOjE2MTE3NzMwNzN9.Q-belY7lz6ULy3Bf2I1qYdapBbrb3_rqnbB8h6fAp6M
+Content-Type: application/json
+
+{
+    "name": "Техника",
+    "image": "icon-all.png",
+    "color": "red",
+    "communityId": 1
+}
+
+###
+PUT http://localhost:3000/api/folders
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwibG9naW4iOiJ2aXR5YXBvcG92OThAeWFuZGV4LnJ1IiwiaWF0IjoxNjExNzY5NDczLCJleHAiOjE2MTE3NzMwNzN9.Q-belY7lz6ULy3Bf2I1qYdapBbrb3_rqnbB8h6fAp6M
+Content-Type: application/json
+
+{
+    "id": 4,
+    "name": "Техника 2",
+    "image": "icon-all.png",
+    "color": "blue"
+}
+
+###
+DELETE http://localhost:3000/api/folders?folderId=4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwibG9naW4iOiJ2aXR5YXBvcG92OThAeWFuZGV4LnJ1IiwiaWF0IjoxNjExNzY5NDczLCJleHAiOjE2MTE3NzMwNzN9.Q-belY7lz6ULy3Bf2I1qYdapBbrb3_rqnbB8h6fAp6M
+
+#--------------------Items--------------------
+#---------------------------------------------
+###
+
+GET http://localhost:3000/api/items?folderId=1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwibG9naW4iOiJ2aXR5YXBvcG92OThAeWFuZGV4LnJ1IiwiaWF0IjoxNjExODEyOTYyLCJleHAiOjE2MTE4MTY1NjJ9.OxzyzeRu_DenNzE5EBq1iF3WIttEvljSw9oGSOWB79U
+
+###
+
+GET http://localhost:3000/api/items?storageId=1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwibG9naW4iOiJ2aXR5YXBvcG92OThAeWFuZGV4LnJ1IiwiaWF0IjoxNjExNzUxNDc2LCJleHAiOjE2MTE3NTUwNzZ9.KVs1HS9ZNiajxGSb6BReTmvJGFHoCNTvweKyjlSuPbI
+
+###
+
+GET http://localhost:3000/api/items?communityId=1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwibG9naW4iOiJ2aXR5YXBvcG92OThAeWFuZGV4LnJ1IiwiaWF0IjoxNjExNzUxNDc2LCJleHAiOjE2MTE3NTUwNzZ9.KVs1HS9ZNiajxGSb6BReTmvJGFHoCNTvweKyjlSuPbI
+
+###
+POST http://localhost:3000/api/items
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwibG9naW4iOiJ2aXR5YXBvcG92OThAeWFuZGV4LnJ1IiwiaWF0IjoxNjExNzczNDI3LCJleHAiOjE2MTE3NzcwMjd9.Z3_b2zYXc1HXynG6gycPgRBfds_9WiQyy0UZp9xY1UE
+Content-Type: application/json
+
+{
+    "name": "Китайская ваза",
+    "description": "Антикварная ваза правителя Ли Си Цын",
+    "image": "https://source.unsplash.com/Dq_YHznEXI0",
+    "purchaseDate": null,
+    "guarantee": null,
+    "cost": 100,
+    "count": 1,
+    "utilizeDate": null,
+    "utilizeReason": null,
+    "storageId": 1,
+    "folderId": 1,
+    "givingId": null,
+    "communityId": 1
+}
+
+###
+PUT http://localhost:3000/api/items
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwibG9naW4iOiJ2aXR5YXBvcG92OThAeWFuZGV4LnJ1IiwiaWF0IjoxNjExNzc3MTgyLCJleHAiOjE2MTE3ODA3ODJ9.TGmm9ExDc7ZxNGlqForVlzpXkEpTeLTY_gCkXKI5drM
+Content-Type: application/json
+
+{
+    "id": 4,
+    "name": "Фарфоровая игрушка",
+    "description": "Телефон Xiaomi Redmi Note 15",
+    "image": "https://source.unsplash.com/Dq_YHznEXI0",
+    "purchaseDate": null,
+    "guarantee": null,
+    "cost": 100,
+    "count": 1,
+    "utilizeDate": null,
+    "utilizeReason": null,
+    "storageId": 1,
+    "folderId": 1,
+    "givingId": null,
+    "communityId": 1
+}
+
+###
+DELETE http://localhost:3000/api/items?id=2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwibG9naW4iOiJ2aXR5YXBvcG92OThAeWFuZGV4LnJ1IiwiaWF0IjoxNjExNzU1Mzk4LCJleHAiOjE2MTE3NTg5OTh9.YybhBmp6-amQ22ZQVbIOmRqPt7Wkg-LSho1Tl54sX-E
+
+###
+#--------------------User Communities------------------------
+#------------------------------------------------------------
+GET http://localhost:3000/api/userCommunities
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwibG9naW4iOiJ2aXR5YXBvcG92OThAeWFuZGV4LnJ1IiwiaWF0IjoxNjExODE2NjA3LCJleHAiOjE2MTE4MjAyMDd9.ydy4nShnAhF3GrJzC_1kW_JXR7BNUnrG31irduPVqG8
+
+###
+POST http://localhost:3000/api/userCommunities
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwibG9naW4iOiJ2aXR5YXBvcG92OThAeWFuZGV4LnJ1IiwiaWF0IjoxNjExODE2NjA3LCJleHAiOjE2MTE4MjAyMDd9.ydy4nShnAhF3GrJzC_1kW_JXR7BNUnrG31irduPVqG8
+Content-Type: application/json
+
+{
+    "userId": 1,
+    "communityId": 8
+}
+
+###
+POST http://localhost:3000/api/community
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwibG9naW4iOiJ2aXR5YXBvcG92OThAeWFuZGV4LnJ1IiwiaWF0IjoxNjEyMjg1NDgxLCJleHAiOjE2MTIyODkwODF9.eIbZfb1movtBIB7DtNoNN6VtoVGmYL9IIVM5rGVCMbo
+Content-Type: application/json
+
+{
+    "name": "New Community"
+}
+
+###
+DELETE http://localhost:3000/api/userCommunities?id=6
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwibG9naW4iOiJ2aXR5YXBvcG92OThAeWFuZGV4LnJ1IiwiaWF0IjoxNjExODE2NjA3LCJleHAiOjE2MTE4MjAyMDd9.ydy4nShnAhF3GrJzC_1kW_JXR7BNUnrG31irduPVqG8
+

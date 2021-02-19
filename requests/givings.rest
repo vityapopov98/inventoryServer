@@ -1,0 +1,23 @@
+###
+#--------------------GIVINGS------------------------
+#---------------------------------------------------
+
+###
+POST http://localhost:3000/api/givings
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwibG9naW4iOiJ2aXR5YXBvcG92OThAeWFuZGV4LnJ1IiwiaWF0IjoxNjEyMzczMjI5LCJleHAiOjE2MTIzNzY4Mjl9.yPNb_l2fTZaYin-Ey3X9CTCwigJCISB6_Aubsd-TiSs
+Content-Type: application/json
+
+{
+    "itemId": 3,
+    "date": "2021-02-03",
+    "returnDate": "2021-02-05",
+    "userId": 1,
+    "whoTakeName": "Виктор",
+    "whoTakePhone": "89197984428",
+    "pledge": 1200
+
+}
+
+###
+DELETE http://localhost:3000/api/givings?givingId=2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwibG9naW4iOiJ2aXR5YXBvcG92OThAeWFuZGV4LnJ1IiwiaWF0IjoxNjEyMzczMjI5LCJleHAiOjE2MTIzNzY4Mjl9.yPNb_l2fTZaYin-Ey3X9CTCwigJCISB6_Aubsd-TiSs
