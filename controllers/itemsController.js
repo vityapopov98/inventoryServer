@@ -20,6 +20,7 @@ const Folder = FolderConstructor(sequelize, Sequelize)
 const Storage = StorageConstructor(sequelize, Sequelize)
 const Giving = GivingConstructor(sequelize, Sequelize)
 
+
 function getItems(req, res){
     if(req.query.folderId != undefined){ //если есть folderId
         console.log('---Items in folder---')
@@ -36,6 +37,18 @@ function getItems(req, res){
     else if(req.query.communityId != undefined){ //если указан communityId (ВСЕ вещи)
         console.log('---Items in community---')
         getItemsInCommunity(req).then(table=>{
+            res.json(table)
+        })
+    }
+    else if(req.query.trash != undefined){
+        console.log('---Items in trash---')
+        getItemsInTrash(req).then(table=>{
+            res.json(table)
+        })
+    }
+    else if(req.query.giving != undefined){
+        console.log('---Items in giving---')
+        getItemsInGivings(req).then(table=>{
             res.json(table)
         })
     }
@@ -98,29 +111,43 @@ function getItemsInCommunity(req){
 }
 
 //Вещи утилизированные (Папка "Корзина") по непустым полям utilizeDate && utilizeReason
-function getItemsInTrash(req, res){
+function getItemsInTrash(req){
     //where communityId = комьюнити пользователя текущее
-    const Op = Sequelize.Op;
-    Item.findAll({include: [Storage, Folder, Giving, Community], where:{
-        utilizeDate: {
-            [Op.ne]: null
-        }, 
-        // folderId: null
-    }}).then(table=>{
-        res.json(table)
+    return new Promise((resolve, reject)=>{
+        const Op = Sequelize.Op;
+        Item.findAll({include: [Storage, Folder, Giving, Community], where:{
+            communityId: req.query.trash,
+            utilizeDate: {
+                [Op.ne]: null
+            }, 
+            utilizeReason:{
+                [Op.ne]: null
+            }
+        }}).then(table=>{
+            resolve(table)
+        }).catch(error=>{
+            reject(error)
+        })
     })
+    
 }
 //Отданные на время вещи (Папка "Отданное") по полю givings (если оно не пустое)
-function getItemsInGivings(req, res){
+function getItemsInGivings(req){
     //where communityId = комьюнити пользователя текущее
-    const Op = Sequelize.Op;
-    Item.findAll({include: [Storage, Folder, Giving, Community], where:{
-        givingId: {
-            [Op.ne]: null
-        }
-    }}).then(table=>{
-        res.json(table)
+    return new Promise((resolve, reject)=>{
+        const Op = Sequelize.Op;
+        Item.findAll({include: [Storage, Folder, Giving, Community], where:{
+            communityId: req.query.giving,
+            givingId: {
+                [Op.ne]: null
+            }
+        }}).then(table=>{
+            resolve(table)
+        }).catch(error=>{
+            reject(error)
+        })
     })
+    
 }
 
 //POST
@@ -141,7 +168,8 @@ function createItem(req, res){
         untilizeDate: req.body.untilizeDate, 
         utilizeReason: req.body.utilizeReason,
         storageId: req.body.storageId,
-        folderId: req.body.folderId
+        folderId: req.body.folderId,
+        communityId: req.body.communityId
     }).then(item=>{
         console.log(item)
         res.json({status: 'ok'})
@@ -154,6 +182,10 @@ function updateItem(req, res){
     if(req.body.purchaseDate == 'null' || req.body.purchaseDate == '' || req.body.purchaseDate == undefined){
         req.body.purchaseDate = new Date()
     }
+    if(req.body.utilizeReason == 'null' || req.body.utilizeReason == '' || req.body.utilizeReason == undefined){
+        req.body.utilizeReason = null
+        req.body.utilizeDate = null
+    }
     var updateItem = {
         name: req.body.name,
         description: req.body.description,
@@ -161,7 +193,7 @@ function updateItem(req, res){
         guarantee: req.body.guarantee,
         cost: req.body.cost,
         count: req.body.count,
-        untilizeDate: req.body.untilizeDate, 
+        utilizeDate: req.body.utilizeDate, 
         utilizeReason: req.body.utilizeReason,
         storageId: req.body.storageId,
         folderId: req.body.folderId

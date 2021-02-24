@@ -38,12 +38,13 @@ function createGiving(req, res) {
 //DELETE
 function deleteGiving(req, res) {
     //когда нажимаем на кнопку "вернуть"
-    console.log('DELETING GIVING', req.body)
+    console.log('DELETING GIVING', req.query)
         //находим вещь с giving айди
         Item.findOne({
             where:{
-                givingId: req.body.givingId
-            }
+                givingId: req.query.givingId
+            },
+            raw: true
         }).then(item=>{
             console.log('found item', item)
             //ставим в это поле в вещи null
@@ -56,7 +57,7 @@ function deleteGiving(req, res) {
             }).then(()=>{
                 //потом удаляем сам giving
                 Giving.destroy({where:{
-                    id: req.body.givingId
+                    id: req.query.givingId
                 }}).then(()=>{
                     console.log('Destroyed 🤯💥')
                     res.json({status: 'ok'})

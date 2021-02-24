@@ -36,6 +36,7 @@ index() // execute (creating) relations
 
 export default ()=>{
 
+    console.log('👾😶creationg user')
     //Creating User
     createUser().then(user=>{
         //Creating Community
@@ -69,7 +70,7 @@ function createUser(){
             bcrypt.hash('qwerty', salt).then(hashedPassword=>{
                 User.sync().then(()=>{
                     return User.create({
-                        name: 'Admin',
+                        name: 'Victor',
                         login: 'vityapopov98@yandex.ru',
                         password: hashedPassword,
                         selectedCommunity: null
@@ -174,7 +175,7 @@ function createItem(storage, folder, community){
             return Item.create({
                 name: 'Test Item',
                 description: 'You can edit this item or remove it.',
-                image: 'https://source.unsplash.com/XeHejTi3bbk',
+                image: 'http://localhost:3000/test.jpg',
                 cost: 100,
                 count: 1,
                 storageId: storage.id,

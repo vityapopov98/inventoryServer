@@ -46,8 +46,8 @@ export default (app)=>{
 
     // ------Itmes-------
     app.get('/api/items', urlencodedParser, getItems)
-    app.get('/api/items/trash', urlencodedParser, getItemsInTrash)
-    app.get('/api/items/given', urlencodedParser, getItemsInGivings)
+    // app.get('/api/items/trash', urlencodedParser, getItemsInTrash)
+    // app.get('/api/items/given', urlencodedParser, getItemsInGivings)
     app.post('/api/items', upload.single('image'), createItem)
     // app.post('/api/items', urlencodedParser, upload.single('image'), createItem)
     app.put('/api/items', upload.single('image'), updateItem)
