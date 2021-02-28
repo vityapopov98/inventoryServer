@@ -30,7 +30,7 @@ sequelize
 // initDB()
 
 app.use('/uploads', express.static('uploads'))
-app.use(express.static('dist'));
+app.use(express.static(__dirname + "/dist/"));
 
 import authRoutes from './auth_routing.js'
 
