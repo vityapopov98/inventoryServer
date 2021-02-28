@@ -20,6 +20,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
     
   },
+  "engines": {
+    "node": "12.18.4"
+  },
   "author": "",
   "license": "ISC"
 }
