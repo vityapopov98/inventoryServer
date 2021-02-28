@@ -8,8 +8,10 @@ import Sequelize from 'sequelize';
 import dotenv from 'dotenv'
 dotenv.config()
 
-const sequelize = new Sequelize('estrynode', 'root', process.env.PASSWORD,{
-    host: '',
+//mysql://b98e9436956d35:ee533ed1@us-cdbr-east-03.cleardb.com/heroku_af8a97aef3ea006?reconnect=true
+//username: b98e9436956d35
+const sequelize = new Sequelize('heroku_af8a97aef3ea006', 'b98e9436956d35', process.env.PASSWORD,{
+    host: 'us-cdbr-east-03.cleardb.com',
     dialect: 'mysql'
 });
 
@@ -24,8 +26,9 @@ sequelize
     console.error('Unable to connect to the database:', err);
 });
 
-// import initDB from './models/initDB.js'
-// initDB()
+import initDB from './models/initDB.js'
+initDB()
+
 app.use('/uploads', express.static('uploads'))
 app.use(express.static('dist'));
 
@@ -34,7 +37,8 @@ import authRoutes from './auth_routing.js'
 authRoutes(app);
 import routing from './routing.js'
 routing(app)
-app.listen(3000, () => {
-    console.log(`Server is running on port 3000.`);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}.`);
 });
 
