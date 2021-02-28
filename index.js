@@ -26,8 +26,8 @@ sequelize
     console.error('Unable to connect to the database:', err);
 });
 
-import initDB from './models/initDB.js'
-initDB()
+// import initDB from './models/initDB.js'
+// initDB()
 
 app.use('/uploads', express.static('uploads'))
 app.use(express.static('dist'));

@@ -151,6 +151,9 @@ function refreshToken(req, res) {
         }).catch(err=>{
             console.log('cannot generate token ', err)
         })
+    }).catch(err=>{
+        console.log('cannot refresh token ', err)
+        res.json({status: err})
     })
 
     //выдаем новые токены
