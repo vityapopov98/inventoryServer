@@ -28,7 +28,8 @@ const upload = multer({storage: storage})
 export default (app)=>{
     app.use(verifyAccessToken)
     app.get('/', (req, res)=>{
-        res.send('hi')
+        res.sendFile(__dirname + '/index.html/')
+        // res.send('hi')
     })
 
 

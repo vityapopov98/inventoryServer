@@ -27,6 +27,7 @@ sequelize
 // import initDB from './models/initDB.js'
 // initDB()
 app.use('/uploads', express.static('uploads'))
+app.use(express.static('dist'));
 
 import authRoutes from './auth_routing.js'
 
