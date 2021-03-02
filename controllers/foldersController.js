@@ -33,7 +33,11 @@ function getFolders(req, res){
                 console.log('А тут', JSON.stringify(respondFolders))
                 res.json(respondFolders)
             })
+        }).catch(err=>{
+            console.log('cannot find folder: ', err)
         })
+    }).catch(err=>{
+        console.log('cannot find user: ', err)
     })
 
 }
@@ -47,6 +51,8 @@ function createFolder(req, res){
         communityId: req.body.communityId
     }).then(()=>{
         res.json({status: 'ok'})
+    }).catch(err=>{
+        console.log('cannot create folder: ', err)
     })
 }
 //PUT
@@ -57,12 +63,15 @@ function updateFolder(req, res) {
             image: req.body.image, 
             color: req.body.color
         },{
-            where: {
-                id: req.body.id
-            }
-        }).then(()=>{
+                where: {
+                    id: req.body.id
+                }
+            }).then(()=>{
+                res.json({status: 'ok'})
+        }).catch(err=>{
+            console.log('cannot update folder: ', err)
+            res.json({status: err})
         })
-        res.json({status: 'ok'})
 }
 //DELETE
 function deleteFolder(req, res) {
@@ -77,6 +86,9 @@ function deleteFolder(req, res) {
                 }
             }).then(result=>{
                 res.json({status: 'ok', rowsAffected: result})
+            }).catch(err=>{
+                console.log('cannot delete folder: ', err)
+                res.json({status: err})
             })
         }
         else{

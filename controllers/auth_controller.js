@@ -48,44 +48,12 @@ function register(req, res) {
                 }).catch(err=>{
                     console.log('cannot generate token ', err)
                 })
+            }).catch(err=>{
+                console.log('cannot register token: ', err)
             })
-            //Ну либо тут, либо сделать другое.. Хэшируем пароль
-            // bcrypt.genSalt().then(salt=>{
-            //     bcrypt.hash(req.body.password, salt).then(hashedPassword=>{
-
-            //         User.create({
-            //             name: req.body.name,
-            //             responsability: req.body.responsability,
-            //             login: req.body.email,
-            //             password: hashedPassword,
-            //             selectedGroup: ()=>{
-            //                 if(req.body.selectedGroup != undefined){
-            //                     return req.body.selectedGroup;
-            //                 }
-            //                 return null;
-            //             }
-    
-            //         }).then(savedUser=>{
-            //             console.log('user saved')
-            //             //Ну создали. Теперь выдаем токены
-            //             var accessToken;
-            //             var refreshToken;
-            //             generateAccessToken(savedUser).then(acc=>{
-            //                 accessToken = acc;
-            //                 generateRefreshToken(savedUser).then(ref=>{
-            //                     refreshToken = ref;
-            //                     res.json({accessToken: accessToken, refreshToken: refreshToken})
-            //                 })
-            //             }).catch(err=>{
-            //                 console.log('cannot generate token ', err)
-            //             })
-                        
-            //         })
-            //     })
-            // })
-
-
         }
+    }).catch(err=>{
+        console.log('error in finding to register: ', err)
     })
 }
 
@@ -98,29 +66,39 @@ function login(req, res) {
         raw:true
     }).then(user=>{
         //сравниваем пароли
-        bcrypt.compare(req.body.password, user.password).then(checked=>{
-            if (checked) {
-                
-                //если норм, то выдаем токены
-                var accessToken;
-                var refreshToken;
-                console.log('user in login func', user)
-                generateAccessToken(user).then(acc=>{
-                    accessToken = acc;
-                    generateRefreshToken(user).then(ref=>{
-                        refreshToken = ref;
-                        res.json({accessToken: accessToken, refreshToken: refreshToken})
+        console.log('user: ', user)
+        if(user != null){
+
+            bcrypt.compare(req.body.password, user.password).then(checked=>{
+                if (checked) {
+                    //если норм, то выдаем токены
+                    var accessToken;
+                    var refreshToken;
+                    console.log('user in login func', user)
+                    generateAccessToken(user).then(acc=>{
+                        accessToken = acc;
+                        generateRefreshToken(user).then(ref=>{
+                            refreshToken = ref;
+                            res.json({accessToken: accessToken, refreshToken: refreshToken})
+                        })
+                    }).catch(err=>{
+                        console.log('cannot generate token ', err)
                     })
-                }).catch(err=>{
-                    console.log('cannot generate token ', err)
-                })
-            }
-            else{
-                console.log('wrong password')
-                res.json({accessToken: '', refreshToken: ''})
-                res.json({status: 'Wrong password'})
-            }
-        })
+                }
+                else{
+                    console.log('wrong password')
+                    res.json({accessToken: '', refreshToken: ''})
+                    res.json({status: 'Wrong password'})
+                }
+            })
+
+        }
+        else{
+            console.log('user is not found')
+            res.json({status: 'Cannot find user'})
+        }
+    }).catch(err=>{
+        console.log('error in finding: ', err)
     })
 }
 
@@ -140,6 +118,7 @@ function refreshToken(req, res) {
             name: user.name,
             login: user.login
         };
+        //выдаем новые токены
         var accessToken;
         var refreshToken;
         generateAccessToken(payload).then(acc=>{
@@ -147,16 +126,17 @@ function refreshToken(req, res) {
             generateRefreshToken(payload).then(ref=>{
                 refreshToken = ref;
                 res.json({accessToken: accessToken, refreshToken: refreshToken})
+            }).catch(err=>{
+                console.log('cannot generate refresh token ', err)
             })
         }).catch(err=>{
-            console.log('cannot generate token ', err)
+            console.log('cannot generate access token ', err)
         })
     }).catch(err=>{
         console.log('cannot refresh token ', err)
         res.json({status: err})
     })
 
-    //выдаем новые токены
 }
 
 //logout

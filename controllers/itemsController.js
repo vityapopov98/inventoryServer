@@ -72,6 +72,8 @@ function getItemsInFolder(req){
                 }
             }).then(table=>{
                 resolve(table)
+            }).catch(err=>{
+                console.log('cannot find items in folder: ', err)
             })
         }).catch(error=>{
             reject(error)
@@ -90,6 +92,8 @@ function getItemsInStorage(req){
                 }
             }).then(table=>{
                 resolve(table)
+            }).catch(err=>{
+                console.log('cannot find items in storages: ', err)
             })
         }).catch(error=>{
             reject(error)
@@ -107,8 +111,8 @@ function getItemsInCommunity(req){
             }
         }).then(table=>{
             resolve(table)
-        }).catch(error=>{
-            reject(error)
+        }).catch(err=>{
+            console.log('cannot find items in All Folder: ', err)
         })
         
     })
@@ -129,8 +133,8 @@ function getItemsInTrash(req){
             }
         }}).then(table=>{
             resolve(table)
-        }).catch(error=>{
-            reject(error)
+        }).catch(err=>{
+            console.log('cannot find items in Trash: ', err)
         })
     })
     
@@ -177,6 +181,8 @@ function createItem(req, res){
     }).then(item=>{
         console.log(item)
         res.json({status: 'ok'})
+    }).catch(err=>{
+        console.log('cannot create item: ', err)
     })
 }
 //PUT
@@ -208,6 +214,8 @@ function updateItem(req, res){
     Item.update(updateItem, {where: {id: req.body.id}}).then(updated=>{
         console.log(updated)
         res.json({status: 'ok', rowsAffected: updated})
+    }).catch(err=>{
+        console.log('cannot update item: ', err)
     })
 }
 //DELETE
@@ -230,6 +238,8 @@ function deleteItem(req, res){
             }).then(result=>{
                 
                 res.json({status: 'ok', rowsAffected: result})
+            }).catch(err=>{
+                console.log('cannot delete item: ', err)
             })
           });
     })
