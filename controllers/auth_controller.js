@@ -5,12 +5,13 @@ dotenv.config()
 //     host: '',
 //     dialect: 'mysql'
 // });
-const sequelize = new Sequelize('heroku_af8a97aef3ea006', 'b98e9436956d35', process.env.PASSWORD,{
-    host: 'us-cdbr-east-03.cleardb.com',
-    dialect: 'mysql'
-});
 
-// import sequelize from './dbConnection.js'
+// const sequelize = new Sequelize('heroku_af8a97aef3ea006', 'b98e9436956d35', process.env.PASSWORD,{
+//     host: 'us-cdbr-east-03.cleardb.com',
+//     dialect: 'mysql'
+// });
+
+import {sequelize} from '../models/dbConnection.js'
 
 import {generateAccessToken, verifyAccessToken, generateRefreshToken, verifyRefreshToken} from '../services/jwt_helper.js'
 import UserConstructor from '../models/user.js'

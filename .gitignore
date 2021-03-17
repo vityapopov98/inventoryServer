@@ -1,5 +1,5 @@
 /uploads
-
+./env
 # local env files
 .env
 .env.local
